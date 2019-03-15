@@ -134,8 +134,6 @@
     End Sub
     Private Function controleerKaart(pnl As Panel)
 
-
-
         For teller As Integer = 0 To 24
             If pnl.Controls("label" & teller).Text = trekkingArray(trekkingNummer) Then
                 pnl.Controls("label" & teller).Font = New Font(pnl.Controls("label" & teller).Font, FontStyle.Strikeout)
