@@ -21,6 +21,7 @@
             Me.trekkingArray(teller) = teller + 1
         Next
         Me.Shuffle(Me.trekkingArray)
+        naam = "ala"
     End Sub
 
     Private Sub maakKaart(ByRef p As Panel, naam As String)
@@ -120,10 +121,11 @@
     End Sub
 
     Private Sub btnVolgendGetal_Click(sender As Object, e As EventArgs) Handles btnVolgendGetal.Click
-        Me.trekkingNummer += 1
-        If Me.trekkingNummer > 5 Then
+
+        If Me.trekkingNummer > 74 Then
             MessageBox.Show("Het spel is afgelopen", "Fout", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
+            ' toon het getrokken getal
             lblGetal.Text = Me.trekkingArray(Me.trekkingNummer)
 
             ' kijk of een speler dit getal heeft
@@ -131,14 +133,26 @@
                 controleerKaart(Me.Controls("pnl" & teller))
             Next
         End If
-    End Sub
-    Private Function controleerKaart(pnl As Panel)
+        lblBeurt.Text = Me.trekkingNummer
+        Me.trekkingNummer += 1
 
+    End Sub
+    Private Sub controleerKaart(pnl As Panel)
+        ' overloop alle vakken
         For teller As Integer = 0 To 24
-            If pnl.Controls("label" & teller).Text = trekkingArray(trekkingNummer) Then
+            ' doe de speciale achtergrondkleur weg (= van vorige ronde)
+            If pnl.Controls("label" & teller).BackColor = Color.GreenYellow Then
+                pnl.Controls("label" & teller).BackColor = Label.DefaultBackColor
+            End If
+
+            ' kijk of we het getrokken getal hebben op deze kaart
+            If pnl.Controls("label" & teller).Text = lblGetal.Text Then
+                ' OK, geef speciale achtergrondkleur en doorstreep
+                pnl.Controls("label" & teller).BackColor = Color.GreenYellow
                 pnl.Controls("label" & teller).Font = New Font(pnl.Controls("label" & teller).Font, FontStyle.Strikeout)
+                pnl.Controls("label" & teller).Font = New Font(pnl.Controls("label" & teller).Font, FontStyle.Italic)
             End If
         Next
 
-    End Function
+    End Sub
 End Class

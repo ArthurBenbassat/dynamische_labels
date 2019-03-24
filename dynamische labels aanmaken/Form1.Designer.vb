@@ -28,6 +28,8 @@ Partial Class frmBingo
         Me.pnl4 = New System.Windows.Forms.Panel()
         Me.lblGetal = New System.Windows.Forms.Label()
         Me.btnVolgendGetal = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblBeurt = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'pnl1
@@ -78,11 +80,31 @@ Partial Class frmBingo
         Me.btnVolgendGetal.Text = "Het volgende getal"
         Me.btnVolgendGetal.UseVisualStyleBackColor = True
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(627, 334)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(35, 13)
+        Me.Label1.TabIndex = 5
+        Me.Label1.Text = "Beurt:"
+        '
+        'lblBeurt
+        '
+        Me.lblBeurt.AutoSize = True
+        Me.lblBeurt.Location = New System.Drawing.Point(668, 334)
+        Me.lblBeurt.Name = "lblBeurt"
+        Me.lblBeurt.Size = New System.Drawing.Size(13, 13)
+        Me.lblBeurt.TabIndex = 6
+        Me.lblBeurt.Text = "0"
+        '
         'frmBingo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(805, 533)
+        Me.Controls.Add(Me.lblBeurt)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnVolgendGetal)
         Me.Controls.Add(Me.lblGetal)
         Me.Controls.Add(Me.pnl4)
@@ -102,4 +124,6 @@ Partial Class frmBingo
     Friend WithEvents pnl4 As Panel
     Friend WithEvents lblGetal As Label
     Friend WithEvents btnVolgendGetal As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents lblBeurt As Label
 End Class
