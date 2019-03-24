@@ -145,7 +145,7 @@
                 pnl.Controls("label" & teller).BackColor = Label.DefaultBackColor
             End If
 
-            'kijk of we het getrokken getal hebben op deze kaart
+            ' kijk of we het getrokken getal hebben op deze kaart
             If pnl.Controls("label" & teller).Text = lblGetal.Text Then
                 ' OK, geef speciale achtergrondkleur en doorstreep
                 pnl.Controls("label" & teller).BackColor = Color.GreenYellow
