@@ -1,6 +1,8 @@
 ﻿Public Class frmBingo
     Dim trekkingNummer As Integer = 0
     Dim trekkingArray(74) As Integer
+    Dim winnaar(4) As Integer
+    Dim paneel As Integer = 1
     Private Sub frmBingo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim naam As String
 
@@ -129,15 +131,17 @@
             lblGetal.Text = Me.trekkingArray(Me.trekkingNummer)
 
             ' kijk of een speler dit getal heeft
-            For teller As Integer = 1 To 4
-                controleerKaart(Me.Controls("pnl" & teller))
+            For paneel = 1 To 4
+                controleerKaart(Me.Controls("pnl" & paneel))
             Next
         End If
         lblBeurt.Text = Me.trekkingNummer
         Me.trekkingNummer += 1
 
+
     End Sub
     Private Sub controleerKaart(pnl As Panel)
+
         ' overloop alle vakken
         For teller As Integer = 0 To 24
             ' doe de speciale achtergrondkleur weg (= van vorige ronde)
@@ -150,9 +154,15 @@
                 ' OK, geef speciale achtergrondkleur en doorstreep
                 pnl.Controls("label" & teller).BackColor = Color.GreenYellow
                 pnl.Controls("label" & teller).Font = New Font(pnl.Controls("label" & teller).Font, FontStyle.Strikeout)
-                pnl.Controls("label" & teller).Font = New Font(pnl.Controls("label" & teller).Font, FontStyle.Italic)
+                Me.winnaar(paneel) += 1
             End If
         Next
+        If winnaar(paneel) = 24 Then
+            MessageBox.Show("Er is een winnaar, speler " & paneel)
+            winnaar(paneel) = 1
+
+        End If
 
     End Sub
+
 End Class
